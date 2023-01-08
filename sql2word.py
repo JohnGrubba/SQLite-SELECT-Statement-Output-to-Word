@@ -1,5 +1,9 @@
-import sqlite3, sys
-from docx import Document
+try:
+    import sqlite3, sys
+    from docx import Document
+except:
+    print("Unresolved Dependencies.")
+    print("pip install -r requirements.txt")
 
 
 # Print iterations progress
@@ -62,7 +66,7 @@ def run(querys, output_file_path, db_path):
 def main():
     args = sys.argv[1:]
     if len(args) < 3:
-        print("Correct Usage\npython3 sql2word.py db.sqlite querys.sql output.docx")
+        print("Correct Usage\npython sql2word.py db.sqlite querys.sql output.docx")
         exit()
     try:
         querys = open(args[1], "r", encoding="UTF-8").read()

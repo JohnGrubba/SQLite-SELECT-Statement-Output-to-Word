@@ -14,7 +14,7 @@ SELECT your_penis FROM short_penises;
 ```
 - Usage
 ```
-python3 sql2word.py db.sqlite querys.sql output.docx
+python sql2word.py db.sqlite querys.sql output.docx
 ```
 ## Features
 - Execute SQLite Querys and dump output into a .docx file
