@@ -45,10 +45,12 @@ def run(querys, output_file_path, db_path):
         for query in querys.split("-- ")[1:]
     ]
     document = Document()
-    document.add_heading("SQL2Word by JJTV")
+    document.sections[0].header.paragraphs[0].text = "SQL2Word by JJTV"
     for query, iterator in zip(querys, range(1, len(querys) + 1)):
         output = run_query(query, db_path)
-        document.add_paragraph(f"Query {iterator}", style="ListBullet")
+        if len(output) < 1:
+            continue
+        document.add_paragraph(f"Query {iterator}", style="List Bullet")
         table = document.add_table(rows=0, cols=len(output[0]), style="Table Grid")
         for row, rowiterator in zip(output, range(len(output))):
             cells = table.add_row().cells
@@ -58,8 +60,7 @@ def run(querys, output_file_path, db_path):
                 if rowiterator == 0:
                     cells[i].text = str(column).upper()
                     cells[i].paragraphs[0].runs[0].font.bold = True
-        printProgressBar(iterator, len(querys), "Running... ")
-
+        printProgressBar(iterator, len(querys), "Running Querys ")
     document.save(output_file_path)
 
 
