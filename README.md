@@ -10,7 +10,7 @@ You need a `.sqlite` Database and a `.sql` file with SQLite Querys in it. Every 
 -- Query 1
 SELECT * FROM fortnite_accs;
 -- Query 2
-SELECT your_penis FROM short_penises;
+SELECT test FROM testtable;
 ```
 - Usage
 ```
